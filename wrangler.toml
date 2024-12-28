@@ -1,0 +1,21 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "cloudflare-do-drizzle-template"
+main = "src/index.ts"
+compatibility_date = "2024-12-03"
+compatibility_flags = [ "nodejs_compat" ]
+
+[observability]
+enabled = true
+
+[[durable_objects.bindings]]
+name = "INNGEST_HANDLER"
+class_name = "InngestHandler"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["InngestHandler"]
+
+[[rules]] 
+type = "Text"
+globs = ["**/*.sql"]
+fallthrough = true
