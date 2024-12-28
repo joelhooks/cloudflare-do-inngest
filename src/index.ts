@@ -1,14 +1,12 @@
 import { Hono } from "hono";
 import { createMiddleware } from 'hono/factory'
-import { Counter } from './counter'
-import { InngestHandler } from './inngest/example-do'
+import { InngestHandler } from './inngest/inngest-handler-do'
 
 type Bindings = {
   INNGEST_HANDLER: DurableObjectNamespace<InngestHandler>
 }
 
 type Variables = {
-  stub: DurableObjectStub<Counter>
   inngestStub: DurableObjectStub<InngestHandler>
 }
 
